@@ -33,6 +33,15 @@ int main()
         exit(-1);
     }
 
+    n = read(sockfd, msg, sizeof(char) * 80);
+    if(n < 0)
+    {
+        printf("[SYSTEM]: ERROR reading from socket.\nTeminating...\n");
+        close(sockfd);
+        exit(-1);
+    }
+    printf("[SERVER]: %s\n", msg);
+
     // Close Socket
     printf("[CLIENT]: Closing socket.\n");
     close(sockfd);

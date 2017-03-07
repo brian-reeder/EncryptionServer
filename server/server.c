@@ -20,7 +20,7 @@ int main()
     int sockfd, n_sockfd, portno, n;
     socklen_t clilen;  
     struct sockaddr_in serv_addr, cli_addr;
-    char message[BUF_SIZE] = {0};
+    char msg[BUF_SIZE] = {0};
 
     portno = 8080;
 
@@ -33,10 +33,23 @@ int main()
     n_sockfd = listen_sock(sockfd);
     
     // Recieve message
-    fetch_message(n_sockfd, message, BUF_SIZE);
-    printf("[CLIENT]: %s\n", message);
+    fetch_message(n_sockfd, msg, BUF_SIZE);
+    printf("[CLIENT]: %s\n", msg);
+
+    printf("[SYSTEM]: Responding to message.\n");
+    strncpy(msg, "I have recieved your message.", BUF_SIZE);
+    n = write(n_sockfd, msg, strlen(msg));
+
+    if(n < 0)
+    {
+        printf("[SYSTEM]: Error writing to socket.\nTerminating...\n");
+        close(n_sockfd);
+        close(sockfd);
+        exit(-1);
+    } 
  
     // Exit Service
+    printf("[SYSTEM]: Closing socket.\n");
     close(n_sockfd);
     close(sockfd);
     return 0;
