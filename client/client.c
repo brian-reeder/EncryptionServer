@@ -19,10 +19,12 @@ int main()
     portno = 8080;
 
     // Establish Connection to server
+    printf("[CLIENT]: Establishing connection with server.\n");
     sockfd = con_serv(portno);
     strncpy(msg, "Testing 1 2 3...", 80);
     
     // Send Message to Server
+    printf("[CLIENT]: Preparing to send message to server.\n");
     n = write(sockfd, msg, strlen(msg));
     if(n < 0)
     {
@@ -32,6 +34,7 @@ int main()
     }
 
     // Close Socket
+    printf("[CLIENT]: Closing socket.\n");
     close(sockfd);
 
     return 0;
