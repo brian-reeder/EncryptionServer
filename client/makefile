@@ -11,4 +11,4 @@ run:
 	./c.out
 
 clean:
-	rm c_foo.o client.o
+	rm c_foo.o client.o c.out

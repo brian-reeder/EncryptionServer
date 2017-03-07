@@ -11,4 +11,4 @@ run:
 	./s.out
 
 clean:
-	rm server.o s_foo.o
+	rm server.o s_foo.o s.out
