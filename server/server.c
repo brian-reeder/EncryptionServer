@@ -24,12 +24,12 @@ int main()
     printf("[SYSTEM]: Binding server to port number %i\n", portno);
     sockfd = bind_sock(portno);
 
-    printf("[SYSTEM]: Listening for a connecting client...");
+    printf("[SYSTEM]: Listening for a connecting client...\n");
     n_sockfd = listen_sock(sockfd);
     
     fetch_message(n_sockfd, message, BUF_SIZE);
    
-    printf("%s\n", message);
+    printf("[CLIENT]: %s\n", message);
  
     close(n_sockfd);
     close(sockfd);
