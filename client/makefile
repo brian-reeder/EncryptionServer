@@ -7,7 +7,7 @@ client.o: client.c c_foo.h
 c_foo.o: c_foo.c c_foo.h
 	gcc -c c_foo.c
 
-run:
+run: c.out
 	./c.out
 
 clean:

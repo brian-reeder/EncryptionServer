@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #include <unistd.h>
 #include <sys/types.h>
@@ -21,3 +22,5 @@
 #include <netinet/in.h>
 
 int con_serv(int portno);
+
+unsigned char* new_key();

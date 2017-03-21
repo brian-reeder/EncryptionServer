@@ -3,11 +3,14 @@
 // Brian John Sedwick Reeder
 // Reeder.BrianJ@gmail.com
 //
-// v0.1.0
-// Plain Text
+// v0.1.1
+// AES
 // Server currently communicates via
 // plaintext. only works on local
 // network and on port 8080
+// 
+// 256-bit Key now generates 
+// automatically
 // 
 
 #include "c_foo.h"
@@ -17,6 +20,14 @@ int main()
     int portno, sockfd, n;
     char msg[80];
     portno = 8080;
+
+
+    unsigned char* key;
+    printf("[CLIENT]: Key: ");
+    key = new_key();
+    for(n = 0; n < 32; n++)
+        printf("%x ", key[n]);
+    printf("\n\n");
 
     // Establish Connection to server
     printf("[CLIENT]: Establishing connection with server.\n");

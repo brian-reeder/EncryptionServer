@@ -51,3 +51,25 @@ int con_serv(int portno)
 
     return sockfd;
 }
+
+
+// Needs modification for 128bit 192bit & 256bit
+unsigned char* new_key()
+{
+    int i;
+    time_t t;
+    unsigned char *key;
+    
+    // Seed the random number generator
+    srand((unsigned) time(&t));
+
+    // Create global space for new key
+    key = (unsigned char *) malloc(sizeof(unsigned char) * 32);
+    
+    // Assign random values from 0x01 - 0xff
+    for(i = 0; i < 32; i++)
+        while(key[i] == 0)
+            key[i] = rand() % 256;
+
+    return key;
+}
